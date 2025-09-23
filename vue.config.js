@@ -1,4 +1,9 @@
 const { defineConfig } = require('@vue/cli-service')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+
 module.exports = defineConfig({
     transpileDependencies: true, // 解决跨域问题
     // 关闭ESLint检查
@@ -42,6 +47,19 @@ module.exports = defineConfig({
         // 性能优化配置
         performance: {
             hints: false
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10240, // 10KB以下的图片转为base64
+                        name: 'img/[name].[hash:7].[ext]',
+                        esModule: false
+                    }
+                }
+            ]
         }
     },
     // 其他配置
@@ -50,13 +68,20 @@ module.exports = defineConfig({
     css: {
         // 是否使用css分离插件
         extract: process.env.NODE_ENV === 'production',
-        // 开启CSS source maps
+        // 关闭CSS source maps
         sourceMap: false,
         // css预设器配置项
         loaderOptions: {
             css: {
                 // 这里的选项会传递给css-loader
+                esModule: false
             }
+        }
+    },
+    chainWebpack: config => {
+        if (process.env.NODE_ENV === 'production') {
+            // CSS压缩
+            config.plugin('optimize-css').use(OptimizeCSSAssetsPlugin)
         }
     }
 })

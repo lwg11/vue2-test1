@@ -24,27 +24,10 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true,
-      "browser": true,
-      "es6": true
+      "node": true
     },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser",
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "rules": {
-      "no-console": "warn",
-      "no-debugger": "warn",
-      "vue/script-setup-uses-vars": "error",
-      "vue/no-unused-components": "warn",
-      "vue/no-unused-vars": "warn",
-      "vue/multi-word-component-names": "off"
-    }
+    "extends": [],
+    "rules": {}
   },
   "browserslist": [
     "> 1%",

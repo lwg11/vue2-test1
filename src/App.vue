@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <TestApp1 msg="1"/>
+    <TestApp1 msg="1" />
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import TestApp1 from './components/TestApp1.vue'
+import TestApp1 from './components/TestApp1.vue';
 
 export default {
   name: 'App',
   components: {
-    TestApp1
-  }
-}
+    TestApp1,
+  },
+};
 </script>
 
 <style>

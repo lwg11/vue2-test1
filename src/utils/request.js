@@ -3,11 +3,11 @@ import Vue from 'vue';
 // 创建一个错误处理函数
 export const handleError = (error, options = {}) => {
   const { showMessage = true } = options;
-  
+
   if (showMessage) {
     Vue.prototype.$message.error(error.message || '请求失败，请稍后重试');
   }
-  
+
   return Promise.reject(error);
 };
 

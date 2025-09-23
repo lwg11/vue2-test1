@@ -20,7 +20,7 @@ export const userApi = {
     getUserInfo() {
         return request.get('/api/user/info');
     },
-    
+
     // 获取用户列表
     getUserList(params) {
         return request.get('/api/users', params);

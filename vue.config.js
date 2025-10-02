@@ -52,7 +52,7 @@ module.exports = defineConfig({
             rules: [
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                    loader: 'url-loader',
+                    loader: 'url-loader', // 图片加载器
                     options: {
                         limit: 10240, // 10KB以下的图片转为base64
                         name: 'img/[name].[hash:7].[ext]',
